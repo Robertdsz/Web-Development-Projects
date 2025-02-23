@@ -1,0 +1,40 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+
+# React/Vite/Next.js (ou outros frameworks frontend)
+.vite
+.next/
+dist/
+build/
+.cache/
+public/
+
+# Editor de código (VS Code, JetBrains, etc.)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs e arquivos temporários
+*.log
+*.bak
+*.tmp
+*.DS_Store
+
+# Dependências de pacotes
+package-lock.json
+yarn.lock
+
+# Banco de dados local (caso use MongoDB local)
+data/
+dump/
+
+# Uploads e arquivos gerados
+uploads/
+coverage/
