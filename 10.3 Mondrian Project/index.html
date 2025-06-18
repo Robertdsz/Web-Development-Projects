@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mondrian Project</title>
+  <style>
+    /* 
+    Write your CSS here 
+    Gap Colour: #000
+    White: #F0F1EC
+    Red: #E72F24
+    Black: #232629
+    Blue: #004592
+    Yellow: #F9D01E
+
+    For dimensions, see dimensions.png image.
+    HINT: Remember you can't change the properties of grid lines.
+    But grid lines are transparent!
+    */
+    .body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container{
+      height: 748px;
+      width: 748px;
+      display: grid;
+      grid-template-columns: 320px 198px 153px 50px;
+      grid-template-rows: 414px 130px 155px 20px;
+      gap: 9px;
+      background-color: black;
+    }
+
+    .white{
+      background-color: #F0F1EC;
+    }
+
+    .red-square{
+      background-color: #E72F24;
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .white-square-one{
+      grid-area: 2 / 1 / 4 / 1;
+    }
+
+    .blue-square{
+      background-color: #004592;
+    }
+
+    .yellow-square{
+      background-color: #F9D01E;
+    }
+
+    .black-square{
+      background-color: #232629;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Write your HTML here -->
+   <div class="container">
+      <div class="red-square"></div>
+      <div class="white-square-one white"></div>
+      <div class="white-square-two white"></div>
+      <div class="white-square-three white"></div>
+      <div class="blue-square"></div>
+      <div class="white-square-four white"></div>
+      <div class="white-square-five white"></div>
+      <div class="yellow-square"></div>
+      <div class="black-square"></div>
+   </div>
+</body>
+
+</html>
