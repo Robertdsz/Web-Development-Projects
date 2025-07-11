@@ -1,0 +1,19 @@
+body{
+    background-color: #020126;
+}
+
+.main-title{
+    color: #c7f252;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.icon{
+    color: #c7f252;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
