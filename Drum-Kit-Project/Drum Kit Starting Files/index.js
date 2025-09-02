@@ -7,7 +7,7 @@ for (var i = 0; i<numberOfDrumButtons; i++) {
 
         makeSound(buttonInnerHTML);
        
-        documento.addEventListener("keydown", function(event){
+        document.addEventListener("keydown", function(event){
             makeSound(event.key);
         });
 
