@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "dirname": "^0.1.0",
+    "morgan": "^1.10.1",
+    "url": "^0.11.4"
+  }
+}
