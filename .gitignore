@@ -10,7 +10,6 @@ yarn-error.log
 dist/
 build/
 .cache/
-public/
 
 # Editor de código (VS Code, JetBrains, etc.)
 .vscode/
