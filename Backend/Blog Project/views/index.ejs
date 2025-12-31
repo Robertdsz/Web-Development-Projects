@@ -8,5 +8,60 @@
 <body>
     <h1 class="title">Terminal Aberto</h1>
     
+
+    <div class="form-container">
+        <form action="/post" method="post">
+            <label for="title">Título</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="content">Notícia</label>
+            <textarea name="content" id="content" required></textarea>
+
+            <button type="submit">Postar</button>
+        </form>
+    </div>
+
+    <h2 class="post-title">Posts</h2>
+
+    <% if (posts.length === 0 ) { %>
+        <p>Sem posts ainda. Seja o primeiro a postar!</p>
+    <% } %>
+
+    <% posts.forEach(function(post) { %>
+        <div class="post">
+            <h3><%= post.title %></h3>
+            <small><% post.date.toLocaleString("pt-BR")%></small>
+            <p><%= post.content %></p>
+
+            <div class="actions">
+                <!-- botão deletar -->
+                 <form action="/post/<%= post.id %>/delete" method="post">
+                    <button type="submit">delete</button>
+                 </form>
+
+                 <!-- botão mostrar/esconder edição -->
+                  <button type="button" onclick="toggleEdit(post.id)">Edit</button>
+            </div>
+
+            <!-- formulário de edição -->
+             <form id="edit-form-<% post.id %>" class="edit-form" action="/post/<%= post.id %>/edit" method="post">
+                <label>Novo título</label>
+                <input type="text" name="title" value="<%= post.title %>">
+
+                <label>Nova notícia</label>
+                <textarea name="content"><%= post.content %></textarea>
+
+                <button type="submit">Salvar</button>
+             </form>
+        </div>
+        <% }) %>
+
+        <script>
+            function toggleEdit(id){
+                const form = document.getElementById(`edit-form-${id}`);
+                if (!form) return;
+                form.style.display = form.style.display ==="none" || form.style.display === ""? "block" : "none";
+            }
+        </script>
 </body>
 </html>

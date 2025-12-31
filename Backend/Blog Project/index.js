@@ -1,20 +1,21 @@
-import express from express;
+import express from 'express';
 
 const app = express();
 const port = 3000;
 
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: trues}));
+app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 
-const posts = [];
+let posts = [];
+let nextId = 1;
 
 app.get("/", (req, res) => {
     res.render("index.ejs", { posts });
 });
 
-app.post("post", (req, res) => {
+app.post("/post", (req, res) => {
     const { title, content } = req.body;
     if(title && content){
         posts.unshift({
@@ -29,22 +30,28 @@ app.post("post", (req, res) => {
 
 
 //delete post
-app.post("/post/:id/delete", (req, res) => {
+app.post("/post/:id/delete", (req, res) =>{
     const id = Number(req.params.id);
-    const { title, content } = req.body;
-    posts = posts.map((post) => {
-        if (post.id === id){
-            return {
-                ...post,
-                title: title || post.title,
-                content: content || post.content
-            };
-        }
-        return post;
-    })
+    posts = posts.filter((post) => post.id !== id);
     res.redirect("/");
 })
 
+// editar post (atualiza e volta pra mesma página)
+app.post("/post/:id/edit", (req, res) => {
+const id = Number(req.params.id);
+const { title, content } = req.body;
+posts= posts.map((post) => {
+    if (post.id === id) {
+        return {
+            ...post,
+            title: title || post.title,
+            content: content || post.content
+        };
+    }
+    return post;
+})
+res.redirect("/");
+})
 
 app.listen(port, () =>{
     console.log(`Server is running in port ${port}`);
