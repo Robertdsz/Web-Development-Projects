@@ -17,3 +17,6 @@ function addProduct(name, category, price, quantity){
     return newProduct
 }
 
+function getByCategory(category){
+    return inventory.filter(item => item.category.toLowerCase() === category.toLowerCase())
+}
