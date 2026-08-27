@@ -20,3 +20,12 @@ function addProduct(name, category, price, quantity){
 function getByCategory(category){
     return inventory.filter(item => item.category.toLowerCase() === category.toLowerCase())
 }
+
+function getTotalInventoryValue(){
+    return inventory.reduce((acc, item) => {
+
+        const totalItem = item.quantity * item.price
+
+        return acc + totalItem
+    }, 0)
+}
