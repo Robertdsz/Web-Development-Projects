@@ -1,4 +1,4 @@
-const inventory = [
+let inventory = [
     { id: 1, name: "Mechanical Keyboard", category: "Peripherals", price: 250, quantity: 10 },
     { id: 2, name: "Gamer Mouse", category: "Peripherals", price: 120, quantity: 5 },
     { id: 3, name: "24 Monitor", category: "Monitors", price: 900, quantity: 3 }
@@ -39,4 +39,11 @@ function updateQuantity(id, newQuantity){
     product.quantity = newQuantity
 }
 
-updateQuantity(5, 100);
+function removeProduct(id){
+    inventory = inventory.filter(item => item.id !== id)
+    return inventory
+}
+
+removeProduct(1)
+
+console.log(inventory)
