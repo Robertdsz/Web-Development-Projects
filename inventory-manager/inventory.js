@@ -29,3 +29,14 @@ function getTotalInventoryValue(){
         return acc + totalItem
     }, 0)
 }
+
+function updateQuantity(id, newQuantity){
+    const product = inventory.find(item => item.id == id)
+    if(!product){
+        console.log("Invalid ID!")
+        return
+    }
+    product.quantity = newQuantity
+}
+
+updateQuantity(5, 100);
