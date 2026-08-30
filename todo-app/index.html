@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Todo List</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
+    <main class="w-full max-w-md bg-slate-800 rounded-xl shadow-2xl p-6 border border-slate-700 space-y-6">
+        <header class="text-center space-y-1">
+            <h1 class="text-2xl font-bold text-indigo-400">Todo List</h1>
+            <p class="text-xs text-slate-400"> Gerenciador de Tarefas</p>
+        </header>
+        <form id="todo-form" class="flex gap-2">
+            <input
+            type="text"
+            id="todo-input"
+            placeholder="Digite uma nova tarefa..."
+            class="flex-1 bg-slate-900 text-slate-100 border border-slate-700 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-indigo-500 transition"
+            >
+
+            <button
+            type="submit"
+            class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-4 py-2 rounded-lg text-sm transition"
+            >
+                Adicionar
+            </button>
+        </form>
+        <ul id="todo-list" class="space-y-2"></ul>
+
+        <footer class="flex justify-between items-center text-xs text-stale-400 pt-4 border-t border-slate-700">
+            <span id="teask-counter"> 0 tarefas restantes</span>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
