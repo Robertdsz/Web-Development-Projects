@@ -31,11 +31,12 @@ function renderTasks() {
 
     tasks.forEach(function (task) {
         const li = document.createElement('li');
+        li.id = task.id;
         li.className = 'flex items-center justify-between p-3 bg-slate-900 rounded-lg border border-slate-700';
 
         li.innerHTML = `
         <span class="text-sm text-slate-200">${task.text}</span>
-        <button class="text-rose-400 hover:text-rose-300 text-cs font-medium transition">
+        <button class="delete-btn text-rose-400 hover:text-rose-300 text-cs font-medium transition">
           Excluir
           </button>
         `;
@@ -45,5 +46,16 @@ function renderTasks() {
 }
 
 function removeTask(idForRemove){
-    return tasks.filter(task => task.id !== idForRemove);
+    tasks = tasks.filter(task => task.id !== idForRemove);
 }
+
+document.addEventListener('click', function(e) {
+
+    if (e.target.classList.contains('delete-btn')){
+    const idButton = Number(e.target.parentElement.id);
+
+    removeTask(idButton);
+    renderTasks(tasks);
+
+}
+});
