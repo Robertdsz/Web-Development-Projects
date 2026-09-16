@@ -43,3 +43,7 @@ function renderTasks() {
         todoList.appendChild(li);
     });
 }
+
+function removeTask(idForRemove){
+    return tasks.filter(task => task.id !== idForRemove);
+}
