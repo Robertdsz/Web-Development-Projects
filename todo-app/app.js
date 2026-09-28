@@ -23,6 +23,7 @@ todoForm.addEventListener('submit', function (event){
         todoInput.value = '';
 
         renderTasks();
+        updateCounter();
     };
 });
 
@@ -34,8 +35,10 @@ function renderTasks() {
         li.id = task.id;
         li.className = 'flex items-center justify-between p-3 bg-slate-900 rounded-lg border border-slate-700';
 
+        const completedClass = task.completed ? 'line-through opacity-50' : '';
         li.innerHTML = `
-        <span class="text-sm text-slate-200">${task.text}</span>
+        <input class= "checkTask cursor-pointer" type="checkbox" ${task.completed ? 'checked' : ''}>
+        <span class="text-sm text-slate-200 ${completedClass}">${task.text}</span>
         <button class="delete-btn text-rose-400 hover:text-rose-300 text-cs font-medium transition">
           Excluir
           </button>
@@ -56,6 +59,25 @@ document.addEventListener('click', function(e) {
 
     removeTask(idButton);
     renderTasks(tasks);
-
+    updateCounter();
 }
+
+    if(e.target.classList.contains('checkTask')){
+        const idTask = Number(e.target.closest('li').id);
+
+        const task = tasks.find(t => t.id === idTask);
+
+        if (task) {
+            task.completed = e.target.checked;
+
+            renderTasks();
+            updateCounter();
+        }
+    }
 });
+
+
+function updateCounter(){
+    let counter = tasks.filter(task => task.completed === false).length;
+    return taskCounter.innerText = `${counter} tarefas restantes`;
+}
