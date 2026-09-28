@@ -1,4 +1,4 @@
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem('minhasTarefas')) || [];
 
 const todoForm = document.getElementById('todo-form');
 const todoInput = document.getElementById('todo-input');
@@ -24,6 +24,7 @@ todoForm.addEventListener('submit', function (event){
 
         renderTasks();
         updateCounter();
+        saveToLocalStorage();
     };
 });
 
@@ -60,6 +61,7 @@ document.addEventListener('click', function(e) {
     removeTask(idButton);
     renderTasks(tasks);
     updateCounter();
+    saveToLocalStorage();
 }
 
     if(e.target.classList.contains('checkTask')){
@@ -72,6 +74,7 @@ document.addEventListener('click', function(e) {
 
             renderTasks();
             updateCounter();
+            saveToLocalStorage();
         }
     }
 });
@@ -81,3 +84,10 @@ function updateCounter(){
     let counter = tasks.filter(task => task.completed === false).length;
     return taskCounter.innerText = `${counter} tarefas restantes`;
 }
+
+function saveToLocalStorage(){
+    localStorage.setItem('minhasTarefas', JSON.stringify(tasks));
+}
+
+renderTasks();
+updateCounter();
